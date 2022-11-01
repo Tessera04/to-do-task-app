@@ -18,14 +18,12 @@
     titleTask.classList.add("task");
     titleTask.innerText = value;
 
-    const content = `
-    <i class="fas fa-trash-alt trashIcon icon"></i>`
+    
     //task.innerHTML = content;
     taskContent.appendChild(titleTask);
     task.appendChild(taskContent);
+    task.appendChild(deleteBtn());
     list.appendChild(task);
-
-    console.log(content);
     }
 
 
@@ -43,6 +41,18 @@
     element.classList.toggle("fas");
     element.classList.toggle("completeIcon");
     element.classList.toggle("far");
+    }
+
+    const deleteBtn = () => {
+        const i = document.createElement("i");
+        i.classList.add("fas", "fa-trash-alt", "trashIcon", "icon");
+        i.addEventListener("click", deleteTask)
+        return i
+    }
+
+    const deleteTask = (evento) => {
+        const parent = evento.target.parentElement;
+        parent.remove();
     }
 })()
 
